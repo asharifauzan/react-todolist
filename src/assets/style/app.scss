@@ -1,0 +1,148 @@
+@import "var";
+
+html{font-size: $font-size; font-family: $font-type; color: $very-light-gray;}
+*{margin: 0; padding: 0;}
+body { background: $very-light-gray;}
+header{
+  height: 300px;
+  >*{background-size: cover;}
+  &.desktop-dark{background: url('../img/bg-desktop-dark.jpg');}
+  &.desktop-light{background: url('../img/bg-desktop-light.jpg');}
+  &.mobile-dark{background: url('../img/bg-mobile-dark.jpg');}
+  &.mobile-light{background: url('../img/bg-mobile-light.jpg');}
+}
+
+.todo-wrapper{
+  width: 85%;
+  max-width: 500px;
+  margin: -200px auto 0;
+  color: $very-light-gray;
+  >*{display: flex; justify-content: space-between; box-sizing: border-box;}
+  // [type='checkbox']{
+  //   margin: 10px 15px 10px 5px;
+  //   border-radius: 50%;
+  //   outline: none;
+  //   position: relative;
+  //   &::after{
+  //     position: absolute;
+  //     right: 0; bottom: 0; left: 0; right: 0;
+  //     background: red;
+  //     content: '';
+  //   }
+  // }
+  .round-checked{background: $checkbox-gradient !important}
+  .round{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 15px 10px 5px;
+    background: $very-light-grayish-blue;
+    border-radius: 50%;
+    padding: 4px;
+    box-sizing: border-box;
+    &:hover{background: $checkbox-gradient;}
+    & .dark-label{background: $very-dark-grayish-blue;}
+    & label{
+      box-sizing: border-box;
+      border-radius: 50%;
+      cursor: pointer;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: $very-light-gray;
+      // border: 2px solid red;
+      &:after {
+        border: 2px solid #fff;
+        border-top: none;
+        border-right: none;
+        content: "";
+        height: 4px;
+        left: 2px;
+        opacity: 0;
+        position: absolute;
+        top: 4px;
+        transform: rotate(-45deg);
+        width: 12px;
+      }
+    }
+    & input{
+      visibility: hidden;
+      &:checked + label {
+        background: $checkbox-gradient;
+        border-color: transparent;
+        &:after{
+          opacity: 1;
+        }
+      }
+    }
+  }
+  [type='text']{flex-grow: 1; border: none; background: transparent; font-family: $font-type; font-size: $font-size; color: $dark-grayish-blue;
+    &:focus{outline: none}
+  }
+  .dark{background: $very-dark-grayish-blue !important; color: $very-light-grayish-blue !important;}
+  .todo-input, .todo-body li{padding: 10px 15px;}
+  .todo-head{
+    margin-bottom: 35px;
+    div{width: 26px; height: 26px;}
+    .icon-moon{background: url('../img/icon-moon.svg');}
+    .icon-sun{background: url('../img/icon-sun.svg');}
+  }
+  .todo-input{background: $very-light-gray; border-radius: 4px; margin-bottom: 20px;}
+  .todo-body{
+    background: $very-light-gray;
+    color: $very-dark-grayish-blue;
+    flex-direction: column;
+    border-radius: 4px;
+    li{
+      list-style: none;
+      display: flex;
+      align-items: center;
+      color: $dark-grayish-blue;
+      border-bottom: 1px solid $very-light-grayish-blue;
+      .strike{text-decoration: line-through; color: $dark-grayish-blue}
+      p{margin-left: auto; color: $dark-grayish-blue;}
+    }
+    .control{
+      color: $dark-grayish-blue;
+      padding: 10px 15px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      >*{flex-grow: 1;}
+      .filter{
+        text-transform: capitalize;
+        display: flex; justify-content: space-between;
+        .active{color: $very-dark-blue; font-weight: bolder;}
+        .active-dark{color: $light-sea-blue; font-weight: bolder;}
+      }
+      .reset{
+        text-align: right;
+        &:hover{
+          cursor: pointer;
+          color: $very-dark-grayish-blue;
+        }
+      }
+    }
+  }
+  .filter-mobile{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    background: $very-dark-grayish-blue;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: $dark-grayish-blue;
+    .active{color: $very-dark-blue; font-weight: bolder;}
+    .active-dark{color: $light-sea-blue; font-weight: bolder;}
+    p{
+      padding: 0 5px;
+    }
+  }
+  .message-dnd{
+    display: inline-block;
+    width: 100%; text-align: center;
+    margin: 50px auto 0; background: transparent !important; color: $dark-grayish-blue !important;}
+}
